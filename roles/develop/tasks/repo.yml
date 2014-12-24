@@ -1,0 +1,6 @@
+---
+# file: roles/develop/tasks/repo.yml
+- name: set epel repository
+  shell: rpm -Uvh --force http://dl.fedoraproject.org/pub/epel/6/x86_64/epel-release-6-8.noarch.rpm
+- name: set remi repository
+  command: sudo rpm -Uvh --force http://rpms.famillecollet.com/enterprise/remi-release-6.rpm

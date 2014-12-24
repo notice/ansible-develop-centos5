@@ -1,0 +1,6 @@
+---
+# file: roles/develop/tasks/main.yml
+- include: repo.yml
+- include: php.yml
+- include: mysql.yml
+- include: httpd.yml

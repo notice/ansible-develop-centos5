@@ -1,0 +1,27 @@
+---
+# file: roles/develop/tasks/php.yml
+- name: be sure php54 is installed
+  yum: name={{item}} enablerepo=remi,epel state=present
+  with_items:
+     - php
+     - php-devel
+     - php-cli
+     - php-common
+     - php-mbstring
+     - php-xml
+     - php-pdo
+     - php-mysql
+     - php-mcrypt
+  notify:
+     - restart httpd
+  tags: php
+- name: set timezone in php.ini
+  lineinfile: >
+    dest=/etc/php.ini
+    regexp='^;?date.timezone ='
+    line='date.timezone = Asia/Tokyo'
+    owner=root
+    group=root
+    mode=0644
+  notify: restart httpd
+  tags: php

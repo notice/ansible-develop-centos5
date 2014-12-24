@@ -1,0 +1,6 @@
+---
+# file: develop.yml
+- hosts: centos
+  sudo: yes
+  roles:
+    - develop

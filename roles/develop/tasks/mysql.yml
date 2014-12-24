@@ -1,0 +1,11 @@
+---
+# file: roles/develop/tasks/mysql.yml
+- name: be sure mysqld is installed
+  yum: name={{item}} enablerepo=remi,epel state=installed
+  with_items:
+   - mysql
+   - mysql-server
+  tags: mysqld
+- name: be sure mysqld is running and enabled
+  service: name=mysqld state=started enabled=yes
+  tags: mysqld
